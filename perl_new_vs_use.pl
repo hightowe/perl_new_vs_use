@@ -51,9 +51,9 @@ foreach my $module (sort keys %used_modules) {
 #print Dumper(\@new_arrow_lines, \@use_lines, \%used_modules) . "\n";
 
 foreach my $nal (@new_arrow_lines) {
-  my ($module, $trash, $newpart) = $nal =~ m/\s*([a-zA-Z0-9_]+(::[a-zA-Z0-9_]+)*)(->new)/;
+  my ($module, $trash, $newpart) = $nal =~ m/\s*([a-zA-Z0-9_]+(::[a-zA-Z0-9_]+)*)(->new([(]|->)([a-zA-Z0-9_]+([(;]|->))*)/;
   if (! defined($used_modules{$module})) {
-    print " * $module$newpart was seen but no cooresponding \"use $module\"\n";
+    print " * $module$newpart was seen but no corresponding \"use $module\"\n";
   }
   #print "($module, $trash, $newpart)\n";
 }
