@@ -15,9 +15,12 @@ use strict;
 use Email::MIME;
 use Email::MIME;
 my $coder = JSON::XS->new();
+my $coder = JSON::XS->new->foo->baz;
+
 
 $ perl_new_vs_use.pl ./Foo.pm 
 ./Foo.pm
  * Email::MIME is used more than once: 2 times
- * JSON::XS->new was seen but no cooresponding "use JSON::XS"
+ * JSON::XS->new( was seen but no corresponding "use JSON::XS"
+ * JSON::XS->new->foo->baz; was seen but no corresponding "use JSON::XS"
 ~~~
