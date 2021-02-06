@@ -33,7 +33,7 @@ my @file_lines = split(/[\r\n]/, $contents_no_pod);
 
 # Gather the "->new" and the "use" lines into arrays.
 # Later, it might be nice to store and report the ->new line numbers.
-my @new_arrow_lines = grep(/[a-zA-Z0-9_]->new[(]/, @file_lines);
+my @new_arrow_lines = grep(/[a-zA-Z0-9_]->new([(]|->)/, @file_lines);
 my @use_lines = grep(/^use\s+([^\s]+)/, @file_lines);
 
 # Build a convenience hash of used modules and report on any that
